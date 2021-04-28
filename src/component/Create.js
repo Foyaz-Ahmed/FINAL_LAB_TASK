@@ -1,7 +1,7 @@
 import {React,useState} from 'react'
 import {Link} from 'react-router-dom'
 
-const Add = ({diaries,setDiaries,url}) => {
+const Create = ({diaries,setDiaries,url}) => {
 
     const [newDiary,setnewDiary] = useState({
         'id':'',
@@ -11,7 +11,7 @@ const Add = ({diaries,setDiaries,url}) => {
         'last_modification':'',
     });
 
-    const changeUser = (e)=>{
+    const changeInfo = (e)=>{
         const name = e.target.name;
         const value = e.target.value;
         let diary={...newDiary,[name] : value};
@@ -19,7 +19,7 @@ const Add = ({diaries,setDiaries,url}) => {
         
     }
 
-    //assync post type and setting setDiaries
+ 
     const addDiary = async(diary)=>{
         const res = await fetch(url,{
             method:'POST',
@@ -33,7 +33,7 @@ const Add = ({diaries,setDiaries,url}) => {
     }
 
 
-    //submittion
+
     const onsubmit =(e)=>{
         e.preventDefault();
          const id = Math.floor(Math.random()*10000)+1;
@@ -56,21 +56,21 @@ const Add = ({diaries,setDiaries,url}) => {
             <form action="" onSubmit={onsubmit}>
             <div>
                     <label htmlFor="">Event</label>
-                    <input type="text" name='event' onChange={changeUser}/>
+                    <input type="text" name='event' onChange={changeInfo}/>
                 </div>
                 <br/><br/>
 
                 <div>
                     <label htmlFor="">Experience</label>
-                    <input type="text" name='experience' onChange={changeUser}/>
+                    <input type="text" name='experience' onChange={changeInfo}/>
                 </div>
                 <div>
                     <label htmlFor="">Thought</label>
-                    <input type="text" name='thought' onChange={changeUser}/>
+                    <input type="text" name='thought' onChange={changeInfo}/>
                 </div>
                 <div>
                     <label htmlFor="">Last Modification</label>
-                    <input type="date" name='last_modification' onChange={changeUser}/>
+                    <input type="date" name='last_modification' onChange={changeInfo}/>
                 </div>
                 <br/><br/>
 
@@ -84,4 +84,4 @@ const Add = ({diaries,setDiaries,url}) => {
     )
 }
 
-export default Add
+export default Create
