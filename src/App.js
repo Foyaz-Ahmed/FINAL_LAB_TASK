@@ -2,7 +2,9 @@ import './App.css';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Navbar from './component/Navbar';
 import {useState} from 'react'
-
+import useFetch from './component/useFetch';
+import Diaries from './component/Diaries';
+import View from './component/View';
 
 function App() {
 
@@ -18,13 +20,20 @@ function App() {
               <h1>Home</h1>
           </Route>
 
-          <Route path='/add' exact>
-              <h1>Add</h1>
+          <Route path='/create' exact>
+              <h1>Create</h1>
           </Route>
 
-          <Route path='/diarylist' exact>
-            <h1>Diary List</h1>
+          <Route path='/list' exact>
+            <h1>List</h1>
           </Route>
+
+          <Route path='/viewDetails/:id' exact>
+            <h1>ViewDetails</h1>
+            <hr/>
+            <View diaries={diaries} />
+          </Route>
+          
         </Switch>
       </Router>
     </div>
