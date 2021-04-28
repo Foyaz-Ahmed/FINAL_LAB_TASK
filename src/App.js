@@ -3,7 +3,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 import Navbar from './component/Navbar';
 import {useState} from 'react'
 import useFetch from './component/useFetch';
-import Diaries from './component/Diaries';
+import Diaries from './component/Diary';
 import View from './component/View';
 
 function App() {
@@ -34,6 +34,12 @@ function App() {
             <View diaries={diaries} />
           </Route>
           
+          <Route path='/update/:id' exact>
+            <h1>Edit</h1>
+            <hr/>
+            <Update diaries={diaries} url={url} setDiaries={setDiaries}/>
+          </Route>
+
         </Switch>
       </Router>
     </div>
